@@ -40,6 +40,9 @@ android {
 }
 
 dependencies {
+    implementation("com.google.accompanist:accompanist-pager:0.19.0")
+    implementation("com.google.accompanist:accompanist-pager-indicators:0.19.0")
+    implementation ("androidx.compose.foundation:foundation:1.5.1")
 
     implementation("io.coil-kt:coil-compose:2.0.0-rc01")
     implementation(libs.androidx.core.ktx)
