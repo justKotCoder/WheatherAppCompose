@@ -3,6 +3,7 @@ package com.example.wheatherappcompose.screens
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -22,6 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.example.wheatherappcompose.R
+import com.example.wheatherappcompose.data.WeatherModel
 import com.example.wheatherappcompose.ui.theme.BlueLight
 import kotlinx.coroutines.launch
 
@@ -164,17 +166,45 @@ fun TabLayout() {
             when (index) {
                 0 -> LazyColumn(
                     modifier = Modifier.fillMaxSize()
-                ) {
-                    items(15) {
-                        ListItem()
+                ){
+                    itemsIndexed(
+                        listOf(WeatherModel(
+                            city = "Madrid",
+                            time = "2:00",
+                            condition = "Sunny",
+                            icon = "//cdn.weatherapi.com/weather/64x64/night/296.png",
+                            currentTemp = "10 °C",
+                            maxTemp = "",
+                            minTemp = "",
+                            hours = ""
+                        )
+                        )
+                    ){
+                        _, item ->
+                        ListItem(item = item)
                     }
                 }
+
                 1 -> LazyColumn(
                     modifier = Modifier.fillMaxSize()
                 ) {
-                    items(15) {
-                        ListItem()
+                    itemsIndexed(
+                        listOf(WeatherModel(
+                            city = "Madrid",
+                            time = "26 Jun 2025",
+                            condition = "Sunny",
+                            icon = "//cdn.weatherapi.com/weather/64x64/night/296.png",
+                            currentTemp = "",
+                            maxTemp = "23°",
+                            minTemp = "10°",
+                            hours = ""
+                        )
+                        )
+                    ){
+                            _, item ->
+                        ListItem(item = item)
                     }
+
                 }
             }
         }

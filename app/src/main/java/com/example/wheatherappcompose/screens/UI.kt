@@ -18,11 +18,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
+import com.example.wheatherappcompose.data.WeatherModel
 import com.example.wheatherappcompose.ui.theme.BlueLight
 
-@Preview(showBackground = true)
 @Composable
-fun ListItem() {
+fun ListItem(item: WeatherModel) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -43,15 +43,15 @@ fun ListItem() {
                         bottom = 5.dp)
 
             ) {
-                Text(text = "12:00")
-                Text(text = "Sunny",
+                Text(text = item.time)
+                Text(text = item.condition,
                     color = Color.White)
             }
-            Text(text = "-2°C",
+            Text(text = item.currentTemp.ifEmpty { "${item.maxTemp}/${item.minTemp}" }, //если пустая строка, то выводится максимальная и минимальная температура
                 color = Color.White,
                 fontSize = 28.sp)
 
-            AsyncImage(model = "https://cdn.weatherapi.com/weather/64x64/night/122.png",
+            AsyncImage(model = "https:${item.icon}",
                 contentDescription = "Weather Icon 2",
                 modifier = Modifier
                     .padding(end = 8.dp)
