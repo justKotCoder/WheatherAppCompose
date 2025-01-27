@@ -2,6 +2,7 @@ package com.example.wheatherappcompose.screens
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -161,19 +162,25 @@ fun TabLayout() {
         ) { index ->
             // Содержимое каждой страницы
             when (index) {
-                0 -> Text(
-                    text = "Hourly forecast content",
-                    modifier = Modifier.padding(16.dp),
-                    color = Color.Black
-                )
-                1 -> Text(
-                    text = "Daily forecast content",
-                    modifier = Modifier.padding(16.dp),
-                    color = Color.Black
-                )
+                0 -> LazyColumn(
+                    modifier = Modifier.fillMaxSize()
+                ) {
+                    items(15) {
+                        ListItem()
+                    }
+                }
+                1 -> LazyColumn(
+                    modifier = Modifier.fillMaxSize()
+                ) {
+                    items(15) {
+                        ListItem()
+                    }
+                }
             }
         }
 
     }
 }
+
+
 
